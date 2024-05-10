@@ -1,6 +1,7 @@
 # DOMAIN=example.com docker stack deploy -c mobilizon.yml mobilizon
 # UPDATE "users" SET "role" = 'administrator' WHERE "email" = '<admin@example.com>';
 # chown -R 65534:65534 uploads/
+# Don't change domain name
 
 version: '3.8'
 
@@ -50,7 +51,7 @@ services:
       - traefik
 
   postgres:
-    image: mdillon/postgis:11
+    image: postgis/postgis:${POSTGIS_VERSION:-16-3.4}
     environment:
       - POSTGRES_DB=mobilizon
       - POSTGRES_USER=mobilizon

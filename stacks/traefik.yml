@@ -7,7 +7,7 @@ services:
     image: traefik:${VERSION:-v2.11.3}
     command:
       # - --log.level=DEBUG
-      - --accesslog=true
+      - --accesslog=${ACCESS_LOG:-false}
       - --accesslog.filepath=/var/log/traefik/access.log
       - --providers.docker
       - --providers.docker.network=traefik-net
